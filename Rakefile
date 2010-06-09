@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "wc"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "your ruby word counter experience"
+    gem.description = "your ruby word counter experience"
     gem.email = "thesp0nge@gmail.com"
     gem.homepage = "http://github.com/thesp0nge/wc"
     gem.authors = ["Paolo Perego"]

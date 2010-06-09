@@ -1,6 +1,6 @@
 = wc
 
-Description goes here.
+wc gem is a very simple word counter. It takes a file in input and prints the words occurences.
 
 == Note on Patches/Pull Requests
  
