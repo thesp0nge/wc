@@ -43,7 +43,7 @@ if output == 'text'
   w.to_text
 end
 if output == 'json'
-  w.to_json
+  p w.to_json
 end
 if output == 'xml'
   puts 'xml support is coming soon...'
