@@ -4,7 +4,8 @@ class Wc
   def initialize(filename)
     @filename = filename
     @hash = read
-    Array(hash).sort { |one, two| -(one <=> two) }
+    p @hash.inspect
+    Array(hash).sort { |one, two| -(one[1] <=> two[1]) }
     
   end
   
