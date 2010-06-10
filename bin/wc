@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+require 'lib/Wc'
+require 'getoptlong'
+require 'rdoc/usage'
+
+opts = GetoptLong.new(
+  [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+  [ '--version', '-v', GetoptLong::NO_ARGUMENT ]
+)
+
+opts.each do |opt, arg|
+  case opt
+     when '--help'
+       RDoc::usage
+       exit 0
+    when '--version'
+      @version = File.exist?('VERSION') ? File.read('VERSION') : ""
+      puts @version
+      exit 0
+  end
+end
+
+if ARGV.length != 1
+  raise "Please provide a filename."
+  exit 0
+end
+
+w = Wc.new(ARGV.shift)
+w.to_text
