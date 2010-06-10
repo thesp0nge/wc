@@ -5,25 +5,47 @@ require 'rdoc/usage'
 
 opts = GetoptLong.new(
   [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
-  [ '--version', '-v', GetoptLong::NO_ARGUMENT ]
+  [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
+  [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
+  [ '--xml', '-x', GetoptLong::NO_ARGUMENT ]
 )
 
+output = 'text'
+
+begin 
 opts.each do |opt, arg|
   case opt
-     when '--help'
+    when '--help'
        RDoc::usage
        exit 0
     when '--version'
       @version = File.exist?('VERSION') ? File.read('VERSION') : ""
       puts @version
       exit 0
+    when '--json'
+      output = 'json'
   end
 end
+rescue 
+    exit 0
+end
+
 
 if ARGV.length != 1
   raise "Please provide a filename."
   exit 0
 end
 
-w = Wc.new(ARGV.shift)
-w.to_text
+w = Wc.new(ARGV[0])
+
+if output == 'text'
+  w.to_text
+end
+if output == 'json'
+  puts 'json not supported'
+end
+if output == 'xml'
+  puts 'xml not supported'
+end
+
+exit 0

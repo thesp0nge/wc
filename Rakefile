@@ -11,6 +11,14 @@ begin
     gem.homepage = "http://github.com/thesp0nge/wc"
     gem.authors = ["Paolo Perego"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "getoptlong", ">=0"
+    gem.add_development_dependency "builder", ">=2.1.2"
+    gem.add_development_dependency "json", ">=1.4.3"
+    
+    gem.add_dependency "getoptlong", ">=0"
+    gem.add_dependency "builder", ">=2.1.2"
+    gem.add_dependency "json", ">=1.4.3"
+    
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
