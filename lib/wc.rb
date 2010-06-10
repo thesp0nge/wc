@@ -14,11 +14,15 @@ class Wc
       }
   end
   
+  def to_json
+    puts @hash.to_json
+  end
+  
   private
   
   def read() 
     hash = Hash.new { |h, k| h[k] = 0 }
-    File.open(ARGV[0], "r") { |f|
+    File.open(@filename, "r") { |f|
           f.each_line { |line|
             words = line.split
             words.each { |w| hash[w] += 1 }

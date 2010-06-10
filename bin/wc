@@ -2,6 +2,7 @@
 require 'lib/Wc'
 require 'getoptlong'
 require 'rdoc/usage'
+require 'json'
 
 opts = GetoptLong.new(
   [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
@@ -42,7 +43,7 @@ if output == 'text'
   w.to_text
 end
 if output == 'json'
-  puts 'json support is coming soon...'
+  w.to_json
 end
 if output == 'xml'
   puts 'xml support is coming soon...'
