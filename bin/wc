@@ -42,10 +42,10 @@ if output == 'text'
   w.to_text
 end
 if output == 'json'
-  puts 'json not supported'
+  puts 'json support is coming soon...'
 end
 if output == 'xml'
-  puts 'xml not supported'
+  puts 'xml support is coming soon...'
 end
 
 exit 0
