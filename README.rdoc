@@ -2,6 +2,16 @@
 
 wc gem is a very simple word counter. It takes a file in input and prints the words occurences.
 
+== Usage
+
+ $ bin/wc filename 
+ 
+ This is the very basic wc usage. It reads filename and it prints out a sorted
+ array for the word occurrences they have been found.
+
+ $ bin/wc --json filename
+ The same as the example above, except for the results that are printed in json notation.
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
