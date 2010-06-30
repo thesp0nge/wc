@@ -12,6 +12,9 @@ wc gem is a very simple word counter. It takes a file in input and prints the wo
  $ bin/wc --json filename
  The same as the example above, except for the results that are printed in json notation.
 
+ $bin/wc -w x filename
+ It prints out only the first x words that appear with highest rate in filename
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
