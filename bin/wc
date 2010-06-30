@@ -6,12 +6,14 @@ require 'json'
 
 opts = GetoptLong.new(
   [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+  [ '--words', '-w', GetoptLong::REQUIRED_ARGUMENT],
   [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
   [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
   [ '--xml', '-x', GetoptLong::NO_ARGUMENT ]
 )
 
 output = 'text'
+words = -1
 
 begin 
 opts.each do |opt, arg|
@@ -25,6 +27,8 @@ opts.each do |opt, arg|
       exit 0
     when '--json'
       output = 'json'
+    when '--words'
+      words = arg.to_i
   end
 end
 rescue 
@@ -37,7 +41,7 @@ if ARGV.length != 1
   exit 0
 end
 
-w = Wc.new(ARGV[0])
+w = Wc.new(ARGV[0], words)
 
 if output == 'text'
   w.to_text
