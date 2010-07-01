@@ -15,6 +15,9 @@ wc gem is a very simple word counter. It takes a file in input and prints the wo
  $bin/wc -w x filename
  It prints out only the first x words that appear with highest rate in filename
 
+ $bin/wc --cloud filename
+ It prints out the result using definition list HTML tag. This can be used to generate tag clouds
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
