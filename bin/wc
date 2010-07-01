@@ -57,7 +57,7 @@ if output == 'xml'
   puts 'xml support is coming soon...'
 end
 if output == 'cloud'
-  p w.to_cloud
+  puts w.to_cloud
 end
 
 exit 0

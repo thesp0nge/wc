@@ -37,7 +37,7 @@ class Wc
     ret = "<dl>"
     i=1
     cloud_item.each { |elem|
-      ret+="<dt id=\""+i.to_s+"\">" + elem[0] +"</dt>"
+      ret+="<dt id=\"a"+i.to_s+"\">" + elem[0] +"</dt>"
       i+=1
     }
     ret += "</dl>"
