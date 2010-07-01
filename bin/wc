@@ -9,11 +9,13 @@ opts = GetoptLong.new(
   [ '--words', '-w', GetoptLong::REQUIRED_ARGUMENT],
   [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
   [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
-  [ '--xml', '-x', GetoptLong::NO_ARGUMENT ]
+  [ '--xml', '-x', GetoptLong::NO_ARGUMENT ], 
+  [ '--cloud', '-c', GetoptLong::NO_ARGUMENT],
 )
 
 output = 'text'
 words = -1
+
 
 begin 
 opts.each do |opt, arg|
@@ -29,6 +31,8 @@ opts.each do |opt, arg|
       output = 'json'
     when '--words'
       words = arg.to_i
+    when '--cloud'
+      output = 'cloud'
   end
 end
 rescue 
@@ -51,6 +55,9 @@ if output == 'json'
 end
 if output == 'xml'
   puts 'xml support is coming soon...'
+end
+if output == 'cloud'
+  p w.to_cloud
 end
 
 exit 0
