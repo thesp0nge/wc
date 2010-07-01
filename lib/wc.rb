@@ -35,8 +35,10 @@ class Wc
       cloud_item = @sorted[0..@words-1]
     end
     ret = "<dl>"
+    i=1
     cloud_item.each { |elem|
-      ret+="<dt>" + elem[0] +"</dt>"
+      ret+="<dt id=\""+i.to_s+"\">" + elem[0] +"</dt>"
+      i+=1
     }
     ret += "</dl>"
     ret
