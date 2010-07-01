@@ -10,7 +10,7 @@ opts = GetoptLong.new(
   [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
   [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
   [ '--xml', '-x', GetoptLong::NO_ARGUMENT ], 
-  [ '--cloud', '-c', GetoptLong::NO_ARGUMENT],
+  [ '--cloud', '-c', GetoptLong::NO_ARGUMENT]
 )
 
 output = 'text'

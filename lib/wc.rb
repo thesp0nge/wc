@@ -28,6 +28,20 @@ class Wc
     end
   end
   
+  def to_cloud
+    if @words == -1
+      cloud_items = @sorted
+    else
+      cloud_item = @sorted[0..@words-1]
+    end
+    ret = "<dl>"
+    cloud_item.each { |elem|
+      ret+="<dt>" + elem[0] +"</dt>"
+    }
+    ret += "</dl>"
+    ret
+  end
+  
   private
   
   def read() 
@@ -40,5 +54,7 @@ class Wc
         }
     occurrences
   end
+  
+  
   
 end
