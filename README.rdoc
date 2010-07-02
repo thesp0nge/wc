@@ -18,6 +18,9 @@ wc gem is a very simple word counter. It takes a file in input and prints the wo
  $bin/wc --cloud filename
  It prints out the result using definition list HTML tag. This can be used to generate tag clouds
 
+ $bin/wc -H filename
+ It prints out the result excluding some very common English idioms such as ('and', 'of', 'the', ...)
+
 == Note on Patches/Pull Requests
  
 * Fork the project.

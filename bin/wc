@@ -10,12 +10,13 @@ opts = GetoptLong.new(
   [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
   [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
   [ '--xml', '-x', GetoptLong::NO_ARGUMENT ], 
-  [ '--cloud', '-c', GetoptLong::NO_ARGUMENT]
+  [ '--cloud', '-c', GetoptLong::NO_ARGUMENT], 
+  [ '--hide-commons', '-H', GetoptLong::NO_ARGUMENT]
 )
 
 output = 'text'
 words = -1
-
+hide_commons = 0
 
 begin 
 opts.each do |opt, arg|
@@ -33,6 +34,8 @@ opts.each do |opt, arg|
       words = arg.to_i
     when '--cloud'
       output = 'cloud'
+    when '--hide-commons'
+      hide_commons = 1
   end
 end
 rescue 
@@ -45,7 +48,15 @@ if ARGV.length != 1
   exit 0
 end
 
-w = Wc.new(ARGV[0], words)
+if hide_commons 
+  hide_list = ['or', 'the', 'of', 'a', 'if', 'to', 'and', 'in', 'is', 'are']
+else
+  hide_list = []
+end
+
+w = Wc.new(ARGV[0], words, hide_list)
+
+
 
 if output == 'text'
   w.to_text
