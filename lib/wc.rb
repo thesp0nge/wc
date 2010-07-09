@@ -3,9 +3,18 @@ class Wc
   attr_accessor :hide_list
   
   def initialize(filename, words, hide_list)
-    @filename = filename
-    @hide_list = hide_list
-    @occurrences = read
+    puts filename
+    if ! filename.nil?
+      @filename = filename
+      @hide_list = hide_list
+      @occurrences = read
+    else
+      @filename = STDIN
+      @hide_list = hide_list
+      @occurrences = feed
+    end
+    
+    
     @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
     @words = words
   end
@@ -61,6 +70,19 @@ class Wc
             }
           }
         }
+    occurrences
+  end
+  
+  def feed() 
+    occurrences = Hash.new { |h, k| h[k] = 0 }
+    filename.each_line { |line|
+      words = line.split
+      words.each { |w|
+        if ! hide_list.include?(w.downcase)
+          occurrences[w.downcase] += 1
+        end
+      }
+    }
     occurrences
   end
   
