@@ -3,7 +3,6 @@ class Wc
   attr_accessor :hide_list
   
   def initialize(filename, words, hide_list)
-    puts filename
     if ! filename.nil?
       @filename = filename
       @hide_list = hide_list
