@@ -3,17 +3,16 @@ class Wc
   attr_accessor :hide_list
   
   def initialize(filename, words, hide_list)
+  
     if ! filename.nil?
       @filename = filename
-      @hide_list = hide_list
       @occurrences = read
     else
       @filename = STDIN
-      @hide_list = hide_list
       @occurrences = feed
     end
     
-    
+    @hide_list = hide_list
     @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
     @words = words
   end
