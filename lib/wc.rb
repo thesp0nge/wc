@@ -84,6 +84,18 @@ class Wc
         }
     occurrences
   end
+  
+  def feed(line)
+    occurrences = Hash.new { |h, k| h[k] = 0 }
+    words = line.split
+    words.each { |w|
+      if ! hide_list.include?(w.downcase)
+        occurrences[w.downcase] += 1 
+      end
+    }
+    occurrences
+  end
+  
   def get()
     @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
   end
