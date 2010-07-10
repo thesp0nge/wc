@@ -2,21 +2,34 @@ class Wc
   attr_reader :filename, :occurrences, :words
   attr_accessor :hide_list
   
-  def initialize(filename, words, hide_list)
+  # def initialize(filename, words, hide_list)
   
-    if ! filename.nil?
+  #  if ! filename.nil?
+  #    @filename = filename
+  #    @occurrences = read
+  #  else
+  #    @filename = STDIN
+  #    @occurrences = feed
+  #  end
+    
+  #  @hide_list = hide_list
+  #  @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
+  #  @words = words
+  #end
+  
+  def initialize(filename=nil, options={})
+    @hide_list = options["hide_list"]
+    @words = options["words"]
+    
+    if filename
       @filename = filename
       @occurrences = read
     else
-      @filename = STDIN
+      @filename =STDIN
       @occurrences = feed
     end
-    
-    @hide_list = hide_list
     @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
-    @words = words
   end
-  
   
   def to_text
     if @words == -1

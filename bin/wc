@@ -54,7 +54,9 @@ else
   hide_list = []
 end
 
-w = Wc.new(ARGV[0], words, hide_list)
+options = {"hide_list" => hide_list, "words"=>words}
+
+w = Wc.new(ARGV[0], options )
 
 
 
