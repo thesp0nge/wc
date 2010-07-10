@@ -1,5 +1,5 @@
 class Wc 
-  attr_reader :filename, :occurrences, :words
+  attr_reader :filename, :occurrences, :words, :no_autorun
   attr_accessor :hide_list
   
   # def initialize(filename, words, hide_list)
