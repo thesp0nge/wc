@@ -20,15 +20,18 @@ class Wc
   def initialize(filename=nil, options={})
     @hide_list = options["hide_list"]
     @words = options["words"]
+    @no_autorun = options["no_autorun"]
     
-    if filename
-      @filename = filename
-      @occurrences = read
-    else
-      @filename =STDIN
-      @occurrences = feed
+    if ! no_autorun 
+       if filename
+        @filename = filename
+        @occurrences = read
+      else
+        @filename =STDIN
+        @occurrences = feed
+      end
+      @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
     end
-    @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
   end
   
   def to_text
@@ -65,6 +68,24 @@ class Wc
     }
     ret += "</dl>"
     ret
+  end
+  
+  def read(filename) 
+    occurrences = Hash.new { |h, k| h[k] = 0 }
+    File.open(filename, "r") { |f|
+          f.each_line { |line|
+            words = line.split
+            words.each { |w|
+              if ! hide_list.include?(w.downcase)
+                occurrences[w.downcase] += 1 
+              end
+            }
+          }
+        }
+    occurrences
+  end
+  def get()
+    @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
   end
   
   private
