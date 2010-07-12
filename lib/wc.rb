@@ -22,13 +22,17 @@ class Wc
     @words = options["words"]
     @no_autorun = options["no_autorun"]
     
-    if ! no_autorun 
+    if ! @hide_list
+      @hide_list = []
+    end
+    p @no_autorun
+    if ! @no_autorun 
        if filename
         @filename = filename
-        @occurrences = read
+        @occurrences = _read
       else
         @filename =STDIN
-        @occurrences = feed
+        @occurrences = _feed
       end
       @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
     end
@@ -71,29 +75,29 @@ class Wc
   end
   
   def read(filename) 
-    occurrences = Hash.new { |h, k| h[k] = 0 }
+    @occurrences = Hash.new { |h, k| h[k] = 0 }
     File.open(filename, "r") { |f|
           f.each_line { |line|
             words = line.split
             words.each { |w|
               if ! hide_list.include?(w.downcase)
-                occurrences[w.downcase] += 1 
+                @occurrences[w.downcase] += 1 
               end
             }
           }
         }
-    occurrences
+    @occurrences
   end
   
   def feed(line)
-    occurrences = Hash.new { |h, k| h[k] = 0 }
+    @occurrences = Hash.new { |h, k| h[k] = 0 }
     words = line.split
     words.each { |w|
       if ! hide_list.include?(w.downcase)
-        occurrences[w.downcase] += 1 
+        @occurrences[w.downcase] += 1 
       end
     }
-    occurrences
+    @occurrences
   end
   
   def get()
@@ -102,7 +106,7 @@ class Wc
   
   private
   
-  def read() 
+  def _read() 
     occurrences = Hash.new { |h, k| h[k] = 0 }
     File.open(@filename, "r") { |f|
           f.each_line { |line|
@@ -117,7 +121,7 @@ class Wc
     occurrences
   end
   
-  def feed() 
+  def _feed() 
     occurrences = Hash.new { |h, k| h[k] = 0 }
     filename.each_line { |line|
       words = line.split
