@@ -1,32 +1,27 @@
 class Wc 
-  attr_reader :filename, :occurrences, :words, :no_autorun
+  attr_reader :filename, :occurrences, :words, :no_autorun, :css, :css_mode
   attr_accessor :hide_list
   
-  # def initialize(filename, words, hide_list)
-  
-  #  if ! filename.nil?
-  #    @filename = filename
-  #    @occurrences = read
-  #  else
-  #    @filename = STDIN
-  #    @occurrences = feed
-  #  end
-    
-  #  @hide_list = hide_list
-  #  @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
-  #  @words = words
-  #end
+  # Creates a new Wc object
+  # 
+  # The filename is no mandatory, but if provided it will be used to feed thw
+  # word counter gem, otherwise standard input is used.
+  # Options is an array customizing the gem's behavior further.
+  # 
   
   def initialize(filename=nil, options={})
     @hide_list = options["hide_list"]
     @words = options["words"]
     @no_autorun = options["no_autorun"]
     
+    @css_mode = options["css_mode"]
+    
     if ! @hide_list
       @hide_list = []
     end
-    p @no_autorun
+  
     if ! @no_autorun 
+      warn "[DEPRECATION]: 'no_autorun' option will be deprecated in wc 1.0.0 and the default behavior will be no_autorun=TRUE"
        if filename
         @filename = filename
         @occurrences = _read
@@ -102,6 +97,12 @@ class Wc
   
   def get()
     @sorted = Array(occurrences).sort { |one, two| -(one[1] <=> two[1]) }
+    if @words == -1
+      c = @sorted
+    else
+      c = @sorted[0..@words-1]
+    end
+    @sorted = c
   end
   
   private
