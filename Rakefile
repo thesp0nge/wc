@@ -15,9 +15,7 @@ begin
     gem.add_development_dependency "builder", ">=2.1.2"
     gem.add_development_dependency "json_pure", ">=1.4.3"
     
-    # gem.add_dependency "getoptlong", ">=0"
-    #gem.add_dependency "builder", ">=2.1.2"
-    gem.add_dependency "json_pure", ">=1.4.3"
+    # gem.add_dependency "json_pure", ">=1.4.3"
     
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

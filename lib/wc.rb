@@ -45,13 +45,13 @@ class Wc
     end
   end
   
-  def to_json
-    if @words == -1
-      return @sorted.to_json
-    else
-      return @sorted[0..@words-1].to_json
-    end
-  end
+#  def to_json
+#    if @words == -1
+#      return @sorted.to_json
+#    else
+#      return @sorted[0..@words-1].to_json
+#    end
+#  end
   
   def to_cloud
     if @words == -1

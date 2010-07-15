@@ -8,7 +8,7 @@ opts = GetoptLong.new(
   [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
   [ '--words', '-w', GetoptLong::REQUIRED_ARGUMENT],
   [ '--version', '-v', GetoptLong::NO_ARGUMENT ], 
-  [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
+#  [ '--json', '-j', GetoptLong::NO_ARGUMENT ],
   [ '--xml', '-x', GetoptLong::NO_ARGUMENT ], 
   [ '--cloud', '-c', GetoptLong::NO_ARGUMENT], 
   [ '--hide-commons', '-H', GetoptLong::NO_ARGUMENT]
@@ -28,8 +28,8 @@ opts.each do |opt, arg|
       @version = File.exist?('VERSION') ? File.read('VERSION') : ""
       puts @version
       exit 0
-    when '--json'
-      output = 'json'
+#    when '--json'
+#      output = 'json'
     when '--words'
       words = arg.to_i
     when '--cloud'
@@ -63,9 +63,11 @@ w = Wc.new(ARGV[0], options )
 if output == 'text'
   w.to_text
 end
-if output == 'json'
-  p w.to_json
-end
+
+# if output == 'json'
+#  p w.to_json
+#end
+
 if output == 'xml'
   puts 'xml support is coming soon...'
 end
