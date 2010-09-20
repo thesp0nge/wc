@@ -102,7 +102,7 @@ class Wc
         c="tag0"
       end
     
-      ret+="<li class=\""+c+"\">" + elem[0] +"</li>"
+      ret+="<li><a href=\"#\" class=\""+c+"\">" + elem[0] +"</a></li>"
       
     }
     ret += "</ul>"
