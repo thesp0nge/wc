@@ -77,7 +77,7 @@ class Wc
     r9=r8+interval
     r10=r9+interval
     
-    ret = "<ul>"
+    ret = "<ul id=\"cloud\">"
     
     cloud_items.each { |elem|
       if (elem[1]>r10)
