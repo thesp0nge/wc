@@ -77,7 +77,7 @@ class Wc
     r9=r8+interval
     r10=r9+interval
     
-    ret = "<dl>"
+    ret = "<ul>"
     
     cloud_items.each { |elem|
       if (elem[1]>r10)
@@ -102,10 +102,10 @@ class Wc
         c="tag0"
       end
     
-      ret+="<dt class=\""+c+"\">" + elem[0] +"</dt>"
+      ret+="<li class=\""+c+"\">" + elem[0] +"</li>"
       
     }
-    ret += "</dl>"
+    ret += "</ul>"
     ret
   end
   
