@@ -1,25 +1,21 @@
 = wc
 
-wc gem is a very simple word counter. It takes a file in input and prints the words occurences.
+wc is a rubygem to count word occurrences in a given text.
+
+*NEWS*
+This is a major rewrite since version 0.98.2 and the API is completely rewritten from scratch. 
+The expected behavior is to let wc gem to extend a plain ruby String object and use it to retrieve tag cloud.
+Please note that reading words from a file will be removed in further releases.
+
 
 == Usage
 
- $ bin/wc filename 
- 
- This is the very basic wc usage. It reads filename and it prints out a sorted
- array for the word occurrences they have been found.
+Using wc is easy. Just require the gem and use the to_tag_cloud method to the
+string containing the text you want to transform in a tag cloud
 
- $ bin/wc --json filename
- The same as the example above, except for the results that are printed in json notation.
+  require 'wc'
 
- $bin/wc -w x filename
- It prints out only the first x words that appear with highest rate in filename
-
- $bin/wc --cloud filename
- It prints out the result using definition list HTML tag. This can be used to generate tag clouds
-
- $bin/wc -H filename
- It prints out the result excluding some very common English idioms such as ('and', 'of', 'the', ...)
+  "A text longer is here".to_tag_cloud ~> "<ul id=\"cloud\"><li><a href=\"#\" class=\"tag0\">text</a></li><li><a href=\"#\" class=\"tag0\">longer</a></li><li><a href=\"#\" class=\"tag0\">here</a></li></ul>" 
 
 == Note on Patches/Pull Requests
  
@@ -33,4 +29,4 @@ wc gem is a very simple word counter. It takes a file in input and prints the wo
 
 == Copyright
 
-Copyright (c) 2010 Paolo Perego. See LICENSE for details.
+Copyright (c) 2011 Paolo Perego. See LICENSE for details.

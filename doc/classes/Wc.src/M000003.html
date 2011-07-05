@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>to_cloud (Wc)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/wc.rb, line 56</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_cloud</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@words</span> <span class="ruby-operator">==</span> <span class="ruby-value">-1</span>
+      <span class="ruby-identifier">cloud_items</span> = <span class="ruby-ivar">@sorted</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">cloud_items</span> = <span class="ruby-ivar">@sorted</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@words</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">max</span> = <span class="ruby-ivar">@sorted</span>.<span class="ruby-identifier">first</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">min</span> = <span class="ruby-ivar">@sorted</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">1</span>]
+    
+    <span class="ruby-identifier">range</span> = <span class="ruby-identifier">max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">min</span>
+    <span class="ruby-identifier">interval</span> = <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">range</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>)
+      <span class="ruby-identifier">interval</span> = <span class="ruby-identifier">range</span><span class="ruby-operator">/</span><span class="ruby-value">10</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">r0</span>=<span class="ruby-identifier">min</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r1</span>=<span class="ruby-identifier">r0</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r2</span>=<span class="ruby-identifier">r1</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r3</span>=<span class="ruby-identifier">r2</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r4</span>=<span class="ruby-identifier">r3</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r5</span>=<span class="ruby-identifier">r4</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r6</span>=<span class="ruby-identifier">r5</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r7</span>=<span class="ruby-identifier">r6</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r8</span>=<span class="ruby-identifier">r7</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r9</span>=<span class="ruby-identifier">r8</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    <span class="ruby-identifier">r10</span>=<span class="ruby-identifier">r9</span><span class="ruby-operator">+</span><span class="ruby-identifier">interval</span>
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;max=#{max}, min=#{min}, interval=#{interval}&quot;</span>
+    <span class="ruby-identifier">ret</span> = <span class="ruby-value str">&quot;&lt;dl&gt;&quot;</span>
+    
+    <span class="ruby-identifier">cloud_items</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elem</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">&gt;</span><span class="ruby-identifier">r10</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag9&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r9</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag8&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r8</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag7&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r7</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag6&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r6</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag5&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r5</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag4&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r4</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag3&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r3</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag2&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> (<span class="ruby-identifier">elem</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">r2</span>)
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag1&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">c</span>=<span class="ruby-value str">&quot;tag0&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    
+      <span class="ruby-identifier">ret</span><span class="ruby-operator">+=</span><span class="ruby-value str">&quot;&lt;dt class=\&quot;&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">c</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;\&quot;&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">elem</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+</span><span class="ruby-value str">&quot;&lt;/dt&gt;&quot;</span>
+      
+    }
+    <span class="ruby-identifier">ret</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;&lt;/dl&gt;&quot;</span>
+    <span class="ruby-identifier">ret</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
