@@ -7,7 +7,7 @@ This is a major rewrite since version 0.98.2 and the API is completely rewritten
 The expected behavior is to let wc gem to extend a plain ruby String object and use it to retrieve tag cloud.
 Please note that reading words from a file will be removed in further releases.
 
-
+{<img src="http://travis-ci.org/thesp0nge/wc.png" />}[http://travis-ci.org/thesp0nge/wc]
 == Usage
 
 Using wc is easy. Just require the gem and use the to_tag_cloud method to the
